@@ -1,0 +1,8 @@
+name: Skillz
+version: 6.0
+author: Lolmewn
+main: nl.lolmewn.skillz.Main
+commands:
+  skills:
+    usage: Syntax error in command! /<command> help for the help page!
+    description: This command is used for Skillz.
