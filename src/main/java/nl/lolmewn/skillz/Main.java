@@ -55,7 +55,7 @@ public class Main extends JavaPlugin {
     }
 
     private void convertUser(File user) {
-        this.getLogger().info("Converting user " + user.getName().split(".")[0]);
+        this.getLogger().info("Converting user " + user.getName());
         try {
             String username = user.getName().split(".")[0]; //no extension
             FileInputStream in = new FileInputStream(user);
