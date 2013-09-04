@@ -55,9 +55,9 @@ public class Main extends JavaPlugin {
     }
 
     private void convertUser(File user) {
-        this.getLogger().info("Converting user " + user.getName());
+        this.getLogger().info("Converting user " + user.getName().split("\\.")[0]);
         try {
-            String username = user.getName().split(".")[0]; //no extension
+            String username = user.getName().split("\\.")[0]; //no extension
             FileInputStream in = new FileInputStream(user);
             DataInputStream dis = new DataInputStream(in);
             BufferedReader br = new BufferedReader(new InputStreamReader(dis));
