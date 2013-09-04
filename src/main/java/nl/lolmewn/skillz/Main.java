@@ -55,14 +55,12 @@ public class Main extends JavaPlugin {
     }
 
     private void convertUser(File user) {
-        FileInputStream in = null;
+        this.getLogger().info("Converting user " + user.getName().split(".")[0]);
         try {
             String username = user.getName().split(".")[0]; //no extension
-            DataInputStream dis;
-            BufferedReader br;
-            in = new FileInputStream(user);
-            dis = new DataInputStream(in);
-            br = new BufferedReader(new InputStreamReader(dis));
+            FileInputStream in = new FileInputStream(user);
+            DataInputStream dis = new DataInputStream(in);
+            BufferedReader br = new BufferedReader(new InputStreamReader(dis));
             String strLine;
             while ((strLine = br.readLine()) != null) {
                 if (strLine.contains("#")) {
@@ -85,12 +83,6 @@ public class Main extends JavaPlugin {
             in.close();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }  finally {
-            try {
-                in.close();
-            } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }
 
