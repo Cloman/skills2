@@ -17,11 +17,11 @@ blocks:
 special:
   doubleDrops:
     enabled: true
-    chance: %level%/3
+    chance: "%level%/3"
     notifyPlayer: true
   doubleXp:
     enabled: true
-    chance: %level%
+    chance: "%level%"
     notifyPlayer: false
     
 messages:

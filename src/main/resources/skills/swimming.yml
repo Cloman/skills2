@@ -7,7 +7,7 @@ broadcastLevelup: true
 special:
   ignoreDamage:
     enabled: true
-    chance: %level%/2
+    chance: "%level%/2"
     notifyPlayer: true
     
 messages:

@@ -17,7 +17,7 @@ special:
   damageMultiplier:
     enabled: true
     ignoreOnPlayers: false
-    chance: %level%/2
+    chance: "%level%/2"
     multiplier: 1.5
     notify: true
 
