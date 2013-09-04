@@ -44,7 +44,7 @@ public abstract class Skill implements Listener {
 
     private void checkSkillConfig() {
         fileName = name.toLowerCase();
-        filePath = api.getPlugin().getDataFolder().getPath() + "skills" + File.separator + fileName + ".yml";
+        filePath = api.getPlugin().getDataFolder().getPath() + File.separator + "skills" + File.separator + fileName + ".yml";
         File config = new File(filePath);
         if (!config.exists()) {
             try {

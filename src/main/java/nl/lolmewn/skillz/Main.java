@@ -45,6 +45,7 @@ public class Main extends JavaPlugin {
     private void checkOldVersion() {
         File oldConfig = new File(this.getDataFolder(), "skills.yml");
         if (oldConfig.exists()) {
+            oldConfig.renameTo(new File(this.getDataFolder(), "skills_old.yml"));
             File userDir = new File(this.getDataFolder(), "players/");
             if (userDir.exists()) {
                 for (File user : userDir.listFiles()) {
