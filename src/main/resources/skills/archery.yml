@@ -1,0 +1,30 @@
+name: Archery
+description: Level up your arcbery skill to deal extra damage!
+multiplier: 1
+enabled: true
+broadcastLevelup: true
+
+special:
+  rangeXpMultiplier:
+    enabled: true
+    perBlocks: 10
+    under1xpPossible: false
+  headshot:
+    enabled: true
+    xpMultiplier: 1.5
+    damageMultiplier: 2
+    ignoreSlimes: true
+  damageMultiplier:
+    enabled: true
+    ignoreOnPlayers: false
+    chance: %level%/2
+    multiplier: 1.5
+    notify: true
+
+messages:
+  levelup:
+  - '&3Congratulations %player%! You leveled up your %name% skill.'
+  - '&6Your skill level is now %newlevel%'
+  broadcast:
+  - '&3%player% leveled up his %name% skill! He is now level %newlevel%'
+  damageMultiplied: "You shot with extreme power, dealing extra damage!"

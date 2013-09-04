@@ -1,0 +1,20 @@
+name: Acrobatics
+description: Level up your acrobatics skill to avoid damage when falling!
+multiplier: 1
+enabled: true
+broadcastLevelup: true
+
+special:
+  avoidDamage:
+    enabled: true
+    perLevels: 10
+    ignoreOnDeath: true
+    notifyPlayer: true
+    
+messages:
+  levelup:
+  - '&3Congratulations %player%! You leveled up your %name% skill.'
+  - '&6Your skill level is now %newlevel%'
+  broadcast:
+  - '&3%player% leveled up his %name% skill! He is now level %newlevel%'
+  damageAvoided: "You jumped smoothly, avoiding %avoidedDamage% damage!"

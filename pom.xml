@@ -20,13 +20,29 @@
             <id>spout-repo</id>
             <url>http://nexus.spout.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>Centrility</id>
+            <url>http://centrility.nl:8081/nexus/repo/content/repositories/releases/</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>1.6.2-R0.2-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>nl.lolmewn.stats</groupId>
+            <artifactId>Stats</artifactId>
+            <version>1.30-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
-            <version>1.4.7-R1.0</version>
+            <version>1.6.2-R0.2-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
     </dependencies>
