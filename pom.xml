@@ -50,7 +50,7 @@
     </dependencies>
     
     <build>
-        <finalName>${project.artifactId}</finalName>
+        <finalName>Skillz</finalName>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
         <plugins>
             <plugin>
