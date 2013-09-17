@@ -1,6 +1,7 @@
 package nl.lolmewn.skillz.skills;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nl.lolmewn.skillz.SkillzApi;
@@ -25,6 +26,7 @@ public class Acrobatics extends Skill {
         }
     }
 
+    @Override
     public long getMultiplier() {
         return this.getSkillConfig().getInt("multiplier", 1);
     }
@@ -92,6 +94,9 @@ public class Acrobatics extends Skill {
 
     private void handleAvoidDamage(EntityDamageEvent event, SkillzPlayer sPlayer, Player player) {
         int avoidDamageMax = sPlayer.getLevel(this) / this.getSkillConfig().getInt("special.avoidDamage.perLevels", 10);
+        if(avoidDamageMax == 0){
+            return;
+        }
         double avoidedDamage = avoidDamageMax > event.getDamage() ? event.getDamage() : avoidDamageMax;
         if (player.getHealth() <= event.getDamage() - avoidedDamage
                 && this.getSkillConfig().getBoolean("special.avoidDamage.ignoreOnDeath", true)) {
@@ -99,7 +104,7 @@ public class Acrobatics extends Skill {
         }
         if (this.getSkillConfig().getBoolean("special.avoidDamage.notifyPlayer", true)) {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    this.getMessage("messages.damageAvoided", "You jumped smoothly, avoiding %avoidedDamage% damage!").replace("%avoidedDamage%", "" + avoidedDamage).replace("%player%", sPlayer.getPlayerName()).replace("%name%", this.getName())));
+                    this.getMessage("messages.damageAvoided", "You jumped smoothly, avoiding %avoidedDamage% damage!").replace("%avoidedDamage%", "" + new DecimalFormat("0.#").format(avoidedDamage)).replace("%player%", sPlayer.getPlayerName()).replace("%name%", this.getName())));
         }
         event.setDamage(event.getDamage() - avoidedDamage);
     }
