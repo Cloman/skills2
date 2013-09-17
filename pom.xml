@@ -24,7 +24,7 @@
         </repository>
         <repository>
             <id>Centrility</id>
-            <url>http://centrility.nl:8081/nexus/content/repositories/snapshots</url>
+            <url>http://centrility.nl:8081/nexus/content/repositories/snapshots/</url>
         </repository>
     </repositories>
 
