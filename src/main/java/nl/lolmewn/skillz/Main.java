@@ -7,6 +7,7 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nl.lolmewn.skillz.api.SkillManager;
+import nl.lolmewn.skillz.mysql.MySQL;
 import nl.lolmewn.skillz.players.PlayerManager;
 import nl.lolmewn.skillz.skills.*;
 import nl.lolmewn.stats.api.StatsAPI;
@@ -28,6 +29,7 @@ public class Main extends JavaPlugin {
     private SkillManager skillManager = new SkillManager();
     private SkillzApi api;
     private StatsAPI statsApi;
+    private MySQL mysql;
     
     @Override
     public void onEnable() {
@@ -36,9 +38,15 @@ public class Main extends JavaPlugin {
         initMessageManager();
         this.settings = new Settings(this);
         settings.loadSettings();
+        if(settings.isUseMySQL()){
+            this.mysql = new MySQL(this);
+            this.mysql.checkTables();
+            this.mysql.checkIndexes();
+        }
         pManager = new PlayerManager(this);
         api = new SkillzApi(this);
         this.getServer().getServicesManager().register(SkillzApi.class, api, this, ServicePriority.Low);
+        this.getServer().getPluginManager().registerEvents(new Events(this), this);
         this.loadDefaultSkills();
     }
 
@@ -88,6 +96,7 @@ public class Main extends JavaPlugin {
     }
 
     private void checkFiles() {
+        this.getDataFolder().mkdirs();
         if(!new File(this.getDataFolder(), "users.yml").exists()){
             try {
                 new File(this.getDataFolder(), "users.yml").createNewFile();
@@ -119,6 +128,14 @@ public class Main extends JavaPlugin {
     
     public MessageManager getMessageManager(){
         return messageManager;
+    }
+    
+    public FileConfiguration getPlayerFileConfiguration(){
+        return this.userFile;
+    }
+    
+    public MySQL getMySQL(){
+        return mysql;
     }
     
     private void loadDefaultSkills(){

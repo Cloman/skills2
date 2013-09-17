@@ -31,6 +31,7 @@ public class Archery extends Skill {
         }
     }
 
+    @Override
     public long getMultiplier() {
         return this.getSkillConfig().getInt("multiplier", 1);
     }

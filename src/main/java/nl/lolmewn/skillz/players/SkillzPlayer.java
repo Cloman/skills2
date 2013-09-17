@@ -40,15 +40,23 @@ public class SkillzPlayer {
     }
 
     public double getXP(Skill skill) {
-        if(this.xpValues.containsKey(skill.getName())){
-            return this.xpValues.get(skill.getName());
+        return this.getXP(skill.getName());
+    }
+    
+    public double getXP(String skill){
+        if(this.xpValues.containsKey(skill)){
+            return this.xpValues.get(skill);
         }
         return 0;
     }
 
     public int getLevel(Skill skill) {
-        if(this.lvlValues.containsKey(skill.getName())){
-            return this.lvlValues.get(skill.getName());
+        return getLevel(skill.getName());
+    }
+    
+    public int getLevel(String skill){
+        if(this.lvlValues.containsKey(skill)){
+            return this.lvlValues.get(skill);
         }
         return 0;
     }
@@ -76,6 +84,10 @@ public class SkillzPlayer {
     
     public void setXP(Skill skill, double xp){
         this.xpValues.put(skill.getName(), xp);
+    }
+
+    public Iterable<String> getSkills() {
+        return this.xpValues.keySet();
     }
 
 }

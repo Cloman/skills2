@@ -84,4 +84,8 @@ public class Settings {
         return broadcastLevelup;
     }
 
+    public String getDatabasePrefix() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
