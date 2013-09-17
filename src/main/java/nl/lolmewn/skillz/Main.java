@@ -80,6 +80,7 @@ public class Main extends JavaPlugin {
                 }
                 String[] first = strLine.split("=");
                 String skill = first[0];
+                skill = skill.substring(0, 1).toUpperCase() + skill.substring(1).toLowerCase();
                 String[] second = first[1].split(";");
                 int xp = Integer.parseInt(second[0]);
                 int lvl = Integer.parseInt(second[1]);

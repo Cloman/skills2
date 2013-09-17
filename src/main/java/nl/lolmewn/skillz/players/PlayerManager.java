@@ -1,5 +1,7 @@
 package nl.lolmewn.skillz.players;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,9 +51,11 @@ public class PlayerManager extends HashMap<String, SkillzPlayer> {
                         ResultSet set = st.executeQuery();
                         if (set != null) {
                             while (set.next()) {
-                                Skill skill = plugin.getSkillManager().get(set.getString("skill"));
+                                String skillName = set.getString("skill");
+                                skillName = skillName.substring(0, 1).toUpperCase() + skillName.substring(1).toLowerCase();
+                                Skill skill = plugin.getSkillManager().get(skillName);
                                 if (skill == null) {
-                                    plugin.getLogger().warning("Couldn't load skill " + skill + " for player " + name + ", skill not found. Use /skills cleanup to clean all players from non-existing skills");
+                                    plugin.getLogger().warning("Couldn't load skill " + skillName + " for player " + name + ", skill not found. Use /skills cleanup to clean all players from non-existing skills");
                                     continue;
                                 }
                                 temp.setXP(skill, set.getDouble("xp"));
@@ -71,9 +75,10 @@ public class PlayerManager extends HashMap<String, SkillzPlayer> {
         } else {
             ConfigurationSection section = plugin.getPlayerFileConfiguration().getConfigurationSection(name);
             for (String skillName : section.getKeys(false)) {
+                skillName = skillName.substring(0, 1).toUpperCase() + skillName.substring(1).toLowerCase();
                 Skill skill = plugin.getSkillManager().get(skillName);
                 if (skill == null) {
-                    plugin.getLogger().warning("Couldn't load skill " + skill + " for player " + name + ", skill not found. Use /skills cleanup to clean all players from non-existing skills");
+                    plugin.getLogger().warning("Couldn't load skill " + skillName + " for player " + name + ", skill not found. Use /skills cleanup to clean all players from non-existing skills");
                     continue;
                 }
                 temp.setXP(skill, section.getDouble(skillName + ".xp"));
@@ -123,6 +128,11 @@ public class PlayerManager extends HashMap<String, SkillzPlayer> {
             for (String skill : player.getSkills()) {
                 section.set(skill + ".xp", player.getXP(skill));
                 section.set(skill + ".level", player.getLevel(skill));
+            }
+            try {
+                plugin.getPlayerFileConfiguration().save(new File(plugin.getDataFolder(), "users.yml"));
+            } catch (IOException ex) {
+                Logger.getLogger(PlayerManager.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (remove) {
