@@ -36,16 +36,15 @@
             <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>nl.lolmewn.stats</groupId>
-            <artifactId>Stats</artifactId>
-            <version>1.31-SNAPSHOT</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
             <version>1.6.2-R1.1-SNAPSHOT</version>
             <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>nl.lolmewn.stats</groupId>
+            <artifactId>Stats</artifactId>
+            <version>1.31-SNAPSHOT</version>
         </dependency>
     </dependencies>
     
