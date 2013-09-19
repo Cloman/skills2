@@ -1,5 +1,22 @@
+useMySQL: false
+MySQL-User: root
+MySQL-Pass: p4ssw0rd
+MySQL-Host: localhost
+MySQL-Port: 3306
+MySQL-Database: minecraft
+MySQL-Prefix: Skillz
 
+defaultRewards:
+  money: 0
+  items: Glowstone,1;Stone,5;Wood,2,2
 
+broadcastLevelup: true
+lightningOnLevelup: false
+
+onDeath:
+  resetAllSkills: false
+  loseLevels: 0
 
 version: {project.version}
 update: true
+debug: false

@@ -7,6 +7,7 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nl.lolmewn.skillz.api.SkillManager;
+import nl.lolmewn.skillz.commands.SkillsCommand;
 import nl.lolmewn.skillz.mysql.MySQL;
 import nl.lolmewn.skillz.players.PlayerManager;
 import nl.lolmewn.skillz.skills.*;
@@ -47,6 +48,7 @@ public class Main extends JavaPlugin {
         api = new SkillzApi(this);
         this.getServer().getServicesManager().register(SkillzApi.class, api, this, ServicePriority.Low);
         this.getServer().getPluginManager().registerEvents(new Events(this), this);
+        this.getCommand("skills").setExecutor(new SkillsCommand(this));
         this.loadDefaultSkills();
     }
 
@@ -54,6 +56,7 @@ public class Main extends JavaPlugin {
         File oldConfig = new File(this.getDataFolder(), "skills.yml");
         if (oldConfig.exists()) {
             oldConfig.renameTo(new File(this.getDataFolder(), "skills_old.yml"));
+            convertConfig();
             File userDir = new File(this.getDataFolder(), "players/");
             if (userDir.exists()) {
                 for (File user : userDir.listFiles()) {
@@ -154,5 +157,10 @@ public class Main extends JavaPlugin {
             this.saveResource("messages.yml", true);
         }
         this.messageManager = new MessageManager(this, YamlConfiguration.loadConfiguration(msgFile));
+    }
+
+    private void convertConfig() {
+        FileConfiguration old = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "skills_old.yml"));
+        
     }
 }
