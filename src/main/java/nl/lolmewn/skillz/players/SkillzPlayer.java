@@ -23,11 +23,25 @@ public class SkillzPlayer {
         return name;
     }
     
+    /**
+     * Adds one XP to the Skill
+     * @param skill The skill to add one XP to
+     * @return whether or not the addition of this XP causes a levelup
+     */
     public boolean addXP(Skill skill){
         return this.addXP(skill, 1);
     }
     
+    /**
+     * Adds XP to the skill
+     * @param skill The skill to add the XP to
+     * @param value amount of XP to add
+     * @return whether or not the player levels up through the addition of XP
+     */
     public boolean addXP(Skill skill, double value){
+        if(value == 0){
+            return false;
+        }
         double currValue = this.getXP(skill);
         value = value * skill.getMultiplier(); 
         SkillzPlayerXPGainEvent event = new SkillzPlayerXPGainEvent(this, skill, currValue + value);
@@ -36,7 +50,12 @@ public class SkillzPlayer {
             return false;
         }
         this.setXP(skill, event.getNewAmount());
-        return skill.checkLevelup(this);
+        boolean levelUp = false;
+        while(skill.checkLevelup(this)){
+            levelUp = true;
+            skill.levelUp(this, this.getLevel(skill));
+        }
+        return levelUp;
     }
 
     public double getXP(Skill skill) {

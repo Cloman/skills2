@@ -59,7 +59,11 @@ public class Acrobatics extends Skill {
     @Override
     public boolean checkLevelup(SkillzPlayer player) {
         int level = player.getLevel(this);
-        if (level * level * 10 >= player.getXP(this)) {
+        if(level == 0){
+            return true;
+        }
+        double xp = player.getXP(this);
+        if (xp / (level * level * 10) >= 1) {
             return true;
         }
         return false;

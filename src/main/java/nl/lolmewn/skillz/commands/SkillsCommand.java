@@ -2,7 +2,6 @@ package nl.lolmewn.skillz.commands;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import nl.lolmewn.skillz.Main;
 import nl.lolmewn.skillz.api.Skill;
 import nl.lolmewn.skillz.players.SkillzPlayer;
