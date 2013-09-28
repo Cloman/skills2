@@ -53,7 +53,7 @@ public class SkillzPlayer {
         boolean levelUp = false;
         while(skill.checkLevelup(this)){
             levelUp = true;
-            skill.levelUp(this, this.getLevel(skill));
+            skill.levelUp(this, this.levelUp(skill));
         }
         return levelUp;
     }
