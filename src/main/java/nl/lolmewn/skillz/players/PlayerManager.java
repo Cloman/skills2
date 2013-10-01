@@ -74,15 +74,17 @@ public class PlayerManager extends HashMap<String, SkillzPlayer> {
             });
         } else {
             ConfigurationSection section = plugin.getPlayerFileConfiguration().getConfigurationSection(name);
-            for (String skillName : section.getKeys(false)) {
-                skillName = skillName.substring(0, 1).toUpperCase() + skillName.substring(1).toLowerCase();
-                Skill skill = plugin.getSkillManager().get(skillName);
-                if (skill == null) {
-                    plugin.getLogger().warning("Couldn't load skill " + skillName + " for player " + name + ", skill not found. Use /skills cleanup to clean all players from non-existing skills");
-                    continue;
+            if (section != null) {
+                for (String skillName : section.getKeys(false)) {
+                    skillName = skillName.substring(0, 1).toUpperCase() + skillName.substring(1).toLowerCase();
+                    Skill skill = plugin.getSkillManager().get(skillName);
+                    if (skill == null) {
+                        plugin.getLogger().warning("Couldn't load skill " + skillName + " for player " + name + ", skill not found. Use /skills cleanup to clean all players from non-existing skills");
+                        continue;
+                    }
+                    temp.setXP(skill, section.getDouble(skillName + ".xp"));
+                    temp.setLevel(skill, section.getInt(skillName + ".level"));
                 }
-                temp.setXP(skill, section.getDouble(skillName + ".xp"));
-                temp.setLevel(skill, section.getInt(skillName + ".level"));
             }
             this.beingLoaded.remove(name);
         }
