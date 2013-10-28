@@ -13,9 +13,9 @@ public class SkillzPlayerXPGainEvent extends Event implements Cancellable{
     
     private static final HandlerList handlers = new HandlerList();
     private boolean cancelled = false;
-    private SkillzPlayer player;
-    private Skill skill;
-    private double newAmount;
+    private final SkillzPlayer player;
+    private final Skill skill;
+    private final double newAmount;
     
     @Override
     public HandlerList getHandlers() {

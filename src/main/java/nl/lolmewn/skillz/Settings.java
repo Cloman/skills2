@@ -9,11 +9,11 @@ import org.bukkit.inventory.ItemStack;
  */
 public class Settings {
 
-    private Main plugin;
+    private final Main plugin;
     private boolean useMySQL;
     private int defaultMoneyReward;
     private ItemStack[] defaultItemRewards;
-    private boolean usingStats;
+    private final boolean usingStats;
     private boolean broadcastLevelup;
     private String databasePrefix, databaseUser, databasePassword, databaseHost;
     private int databasePort;

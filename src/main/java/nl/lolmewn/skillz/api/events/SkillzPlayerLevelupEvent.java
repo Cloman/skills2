@@ -11,8 +11,8 @@ import org.bukkit.event.HandlerList;
 public class SkillzPlayerLevelupEvent extends Event{
     
     private static final HandlerList handlers = new HandlerList();
-    private SkillzPlayer player;
-    private Skill skill;
+    private final SkillzPlayer player;
+    private final Skill skill;
     private int newLevel;
     
     @Override

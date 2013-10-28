@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
  */
 public class SkillsCommand implements CommandExecutor {
 
-    private Main plugin;
+    private final Main plugin;
 
     public SkillsCommand(Main m) {
         this.plugin = m;

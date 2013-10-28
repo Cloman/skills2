@@ -9,9 +9,9 @@ import org.bukkit.configuration.file.FileConfiguration;
  */
 public class MessageManager {
     
-    private FileConfiguration file;
-    private Main plugin;
-    private HashSet<String> warned = new HashSet<String>();
+    private final FileConfiguration file;
+    private final Main plugin;
+    private final HashSet<String> warned = new HashSet<String>();
     
     public MessageManager(Main m, FileConfiguration file){
         this.plugin = m;

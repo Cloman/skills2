@@ -20,8 +20,8 @@ import org.bukkit.inventory.ItemStack;
  */
 public abstract class Skill implements Listener {
 
-    private String name;
-    private SkillzApi api;
+    private final String name;
+    private final SkillzApi api;
     private FileConfiguration skillConfig;
     private String fileName, filePath;
     

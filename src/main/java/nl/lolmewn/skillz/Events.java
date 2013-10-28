@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
  */
 public class Events implements Listener {
     
-    private Main m;
+    private final Main m;
     
     public Events(Main m){
         this.m = m;

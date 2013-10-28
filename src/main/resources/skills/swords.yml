@@ -1,0 +1,18 @@
+name: Sword fighting
+description: Level up your swords skill to deal extra damage!
+multiplier: 1
+enabled: true
+broadcastLevelup: true
+
+special:
+  lifesteal:
+    enabled: true
+    
+  
+messages:
+  levelup:
+  - '&3Congratulations %player%! You leveled up your %name% skill.'
+  - '&6Your skill level is now %newlevel%'
+  broadcast:
+  - '&3%player% leveled up his %name% skill! He is now level %newlevel%'
+  damageMultiplied: "You swung your sword with extreme power, dealing extra damage!"

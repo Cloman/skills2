@@ -13,7 +13,7 @@ import nl.lolmewn.skillz.Main;
  */
 public class MySQL {
     
-    private Main plugin;
+    private final Main plugin;
     private boolean isFault = false;
     
     public MySQL(Main main){

@@ -27,7 +27,7 @@ public class Main extends JavaPlugin {
     private MessageManager messageManager;
     private PlayerManager pManager;
     private Settings settings;
-    private SkillManager skillManager = new SkillManager();
+    private final SkillManager skillManager = new SkillManager();
     private SkillzApi api;
     private StatsAPI statsApi;
     private MySQL mysql;

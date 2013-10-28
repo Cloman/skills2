@@ -19,8 +19,8 @@ import org.bukkit.configuration.ConfigurationSection;
  */
 public class PlayerManager extends HashMap<String, SkillzPlayer> {
 
-    private Main plugin;
-    private HashSet<String> beingLoaded = new HashSet<String>();
+    private final Main plugin;
+    private final HashSet<String> beingLoaded = new HashSet<String>();
 
     public PlayerManager(Main aThis) {
         plugin = aThis;

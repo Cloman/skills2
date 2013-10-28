@@ -8,7 +8,7 @@ import nl.lolmewn.skillz.players.PlayerManager;
  */
 public class SkillzApi {
     
-    private Main main;
+    private final Main main;
     
     protected SkillzApi(Main main){
         this.main = main;

@@ -10,10 +10,10 @@ import nl.lolmewn.skillz.api.events.SkillzPlayerXPGainEvent;
  */
 public class SkillzPlayer {
     
-    private String name;
+    private final String name;
     
-    private HashMap<String, Double> xpValues = new HashMap<String, Double>();
-    private HashMap<String, Integer> lvlValues = new HashMap<String, Integer>();
+    private final HashMap<String, Double> xpValues = new HashMap<String, Double>();
+    private final HashMap<String, Integer> lvlValues = new HashMap<String, Integer>();
     
     public SkillzPlayer(String name){
         this.name = name;
