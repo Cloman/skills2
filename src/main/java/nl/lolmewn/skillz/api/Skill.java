@@ -24,7 +24,7 @@ public abstract class Skill implements Listener {
     private final SkillzApi api;
     private FileConfiguration skillConfig;
     private String fileName, filePath;
-    
+
     private static int amount;
 
     public Skill(SkillzApi api, String name) {
@@ -33,8 +33,8 @@ public abstract class Skill implements Listener {
         this.checkSkillConfig();
         amount++;
     }
-    
-    public static int getAmountOfSkills(){
+
+    public static int getAmountOfSkills() {
         return amount;
     }
 
@@ -70,14 +70,14 @@ public abstract class Skill implements Listener {
     public SkillzApi getAPI() {
         return api;
     }
-    
-    public MessageManager getMessageManager(){
+
+    public MessageManager getMessageManager() {
         return api.getPlugin().getMessageManager();
     }
-    
-    public String getMessage(String path, String def){
+
+    public String getMessage(String path, String def) {
         String message = this.getSkillConfig().getString(path);
-        if(message != null){
+        if (message != null) {
             return message;
         }
         return this.getMessageManager().getMessage(path.replace("messages.", ""), def);
@@ -173,15 +173,18 @@ public abstract class Skill implements Listener {
                         .replace("%newlevel%", "" + newLevel)));
             }
         }
-        HashMap<Integer, ItemStack> back = p.getInventory().addItem(this.getRewards(newLevel));
-        if (!back.isEmpty()) {
-            for (ItemStack stack : back.values()) {
-                p.getWorld().dropItemNaturally(p.getEyeLocation(), stack);
+        ItemStack[] itemRewards = this.getRewards(newLevel);
+        if (itemRewards != null) {
+            HashMap<Integer, ItemStack> back = p.getInventory().addItem(this.getRewards(newLevel));
+            if (!back.isEmpty()) {
+                for (ItemStack stack : back.values()) {
+                    p.getWorld().dropItemNaturally(p.getEyeLocation(), stack);
+                }
+                p.sendMessage(
+                        ChatColor.translateAlternateColorCodes('&',
+                                this.getSkillConfig().getString("messages.itemsDroppedOnGround",
+                                        "Your inventory was full, causing your item rewards to be dropped on the ground!")));
             }
-            p.sendMessage(
-                    ChatColor.translateAlternateColorCodes('&',
-                    this.getSkillConfig().getString("messages.itemsDroppedOnGround",
-                    "Your inventory was full, causing your item rewards to be dropped on the ground!")));
         }
         if (this.getSkillConfig().getBoolean("broadcastLevelup", this.getAPI().getSettings().isBroadcastLevelup())) {
             for (String text : this.getSkillConfig().getStringList("messages.broadcast")) {
