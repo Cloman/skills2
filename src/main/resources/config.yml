@@ -17,6 +17,6 @@ onDeath:
   resetAllSkills: false
   loseLevels: 0
 
-version: {project.version}
+version: ${project.version}
 update: true
 debug: false
