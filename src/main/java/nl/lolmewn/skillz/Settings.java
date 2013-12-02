@@ -14,7 +14,7 @@ public class Settings {
     private int defaultMoneyReward;
     private ItemStack[] defaultItemRewards;
     private final boolean usingStats;
-    private boolean broadcastLevelup;
+    private boolean broadcastLevelup, lightningOnLevelup;
     private String databasePrefix, databaseUser, databasePassword, databaseHost;
     private int databasePort;
 
@@ -28,6 +28,7 @@ public class Settings {
         FileConfiguration c = plugin.getConfig();
         this.defaultMoneyReward = c.getInt("defaultRewards.money", 0);
         this.broadcastLevelup = c.getBoolean("broadcastLevelup", true);
+        this.lightningOnLevelup = c.getBoolean("lightningOnLevelup", false);
         this.loadItems();
     }
 
@@ -118,5 +119,9 @@ public class Settings {
                 }
             }
         }
+    }
+
+    public boolean getLightningOnLevelup() {
+        return lightningOnLevelup;
     }
 }

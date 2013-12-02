@@ -194,5 +194,8 @@ public abstract class Skill implements Listener {
                         .replace("%newlevel%", "" + newLevel)));
             }
         }
+        if(this.getSkillConfig().getBoolean("lightningOnLevelup", this.getAPI().getSettings().getLightningOnLevelup())){
+            p.getWorld().strikeLightningEffect(p.getLocation());
+        }
     }
 }
