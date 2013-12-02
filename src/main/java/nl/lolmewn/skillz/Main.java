@@ -37,6 +37,9 @@ public class Main extends JavaPlugin {
         checkFiles();
         checkOldVersion();
         initMessageManager();
+        this.saveDefaultConfig();
+        this.getConfig().options().copyDefaults(true);
+        this.saveConfig();
         this.settings = new Settings(this);
         settings.loadSettings();
         if(settings.isUseMySQL()){
