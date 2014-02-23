@@ -127,6 +127,9 @@ public class PlayerManager extends HashMap<String, SkillzPlayer> {
             });
         } else {
             ConfigurationSection section = plugin.getPlayerFileConfiguration().getConfigurationSection(name);
+            if(section == null){
+                section = plugin.getPlayerFileConfiguration().createSection(name);
+            }
             for (String skill : player.getSkills()) {
                 section.set(skill + ".xp", player.getXP(skill));
                 section.set(skill + ".level", player.getLevel(skill));

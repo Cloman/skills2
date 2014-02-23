@@ -1,5 +1,6 @@
 package nl.lolmewn.skillz;
 
+import java.util.Collection;
 import nl.lolmewn.skillz.api.Skill;
 import nl.lolmewn.skillz.players.PlayerManager;
 
@@ -32,6 +33,14 @@ public class SkillzApi {
     
     public void addSkill(Skill skill){
         this.main.getSkillManager().add(skill);
+    }
+    
+    public Collection<Skill> getSkills(){
+        return this.main.getSkillManager().values();
+    }
+    
+    public void deleteSkill(String skillName){
+        this.main.getSkillManager().remove(skillName);
     }
 
 }

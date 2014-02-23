@@ -56,7 +56,10 @@ public class SkillsCommand implements CommandExecutor {
             totalXP += player.getXP(skillName);
         }
         if (!(skills.size() > page * 8 - 8)) {
-            sender.sendMessage(ChatColor.RED + "There is no page " + page + " for " + player.getPlayerName() + "!");
+            sender.sendMessage(ChatColor.RED + "There is no page " + page + " for " + (sender.getName().equals(player.getPlayerName()) ? "you" : player.getPlayerName()) + "!");
+            if(sender.getName().equals(player.getPlayerName())){
+                sender.sendMessage(ChatColor.RED + "Try getting your first XP to be able to see your skills!");
+            }
             return;
         }
         int getCounter = (page - 1) * 8;
