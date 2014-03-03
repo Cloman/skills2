@@ -9,30 +9,34 @@ import org.bukkit.event.HandlerList;
 /**
  * @author Lolmewn
  */
-public class SkillzPlayerXPGainEvent extends Event implements Cancellable{
-    
+public class SkillzPlayerXPGainEvent extends Event implements Cancellable {
+
     private static final HandlerList handlers = new HandlerList();
     private boolean cancelled = false;
     private final SkillzPlayer player;
     private final Skill skill;
     private final double newAmount;
-    
+
     @Override
     public HandlerList getHandlers() {
         return handlers;
     }
-    
+
+    public static HandlerList getHandlerList() {
+        return handlers;
+    }
+
     @Override
-    public boolean isCancelled(){
+    public boolean isCancelled() {
         return cancelled;
     }
-    
+
     @Override
-    public void setCancelled(boolean value){
+    public void setCancelled(boolean value) {
         this.cancelled = value;
     }
-    
-    public SkillzPlayerXPGainEvent(SkillzPlayer player, Skill skill, double newAmount){
+
+    public SkillzPlayerXPGainEvent(SkillzPlayer player, Skill skill, double newAmount) {
         this.player = player;
         this.skill = skill;
         this.newAmount = newAmount;
@@ -41,8 +45,8 @@ public class SkillzPlayerXPGainEvent extends Event implements Cancellable{
     public double getNewAmount() {
         return newAmount;
     }
-    
-    public double getOldAmount(){
+
+    public double getOldAmount() {
         return player.getXP(skill);
     }
 

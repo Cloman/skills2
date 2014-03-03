@@ -8,19 +8,23 @@ import org.bukkit.event.HandlerList;
 /**
  * @author Lolmewn
  */
-public class SkillzPlayerLevelupEvent extends Event{
-    
+public class SkillzPlayerLevelupEvent extends Event {
+
     private static final HandlerList handlers = new HandlerList();
     private final SkillzPlayer player;
     private final Skill skill;
     private int newLevel;
-    
+
     @Override
     public HandlerList getHandlers() {
         return handlers;
     }
-    
-    public SkillzPlayerLevelupEvent(SkillzPlayer player, Skill skill, int newLevel){
+
+    public static HandlerList getHandlerList() {
+        return handlers;
+    }
+
+    public SkillzPlayerLevelupEvent(SkillzPlayer player, Skill skill, int newLevel) {
         this.player = player;
         this.skill = skill;
         this.newLevel = newLevel;
@@ -37,8 +41,8 @@ public class SkillzPlayerLevelupEvent extends Event{
     public Skill getSkill() {
         return skill;
     }
-    
-    public void setNewLevel(int level){
+
+    public void setNewLevel(int level) {
         this.newLevel = level;
     }
 
