@@ -5,14 +5,14 @@ enabled: true
 broadcastLevelup: true
 
 blocks:
-    1:
+    WOOD:0:
         xp: 1
-    4:
-        xp: 0,5
-        level: 2
+    WOOD:1:
+        xp: 3
+        level: 5
     tool_level: 
     #only for breaking blocks
-        287: 5 
+        DIAMOND_AXE: 5
     
 special:
     doubleDrops:

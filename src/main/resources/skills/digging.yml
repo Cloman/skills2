@@ -5,14 +5,14 @@ enabled: true
 broadcastLevelup: true
 
 blocks:
-    1:
+    STONE:
         xp: 1
-    4:
+    SAND:
         xp: 0,5
         level: 2
     tool_level: 
     #only for breaking blocks
-        287: 5 
+        DIAMOND_SHOVEL: 5
     
 special:
     doubleDrops:
