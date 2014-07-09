@@ -93,7 +93,7 @@ public class Mining extends Skill {
                     this.getMessage("messages.needsHigherLevelTool",
                             ChatColor.RED + "You need a higher %name% level to use this tool! "
                             + "Level needed is %level%").replace("%name%", this.getName())
-                            .replace("%level%", "" + sec.getInt("level"))));
+                            .replace("%level%", "" + this.getSkillConfig().getInt("blocks.tool_level." + event.getPlayer().getItemInHand().getType().toString(), 0))));
             event.setCancelled(true);
             return;
         }
