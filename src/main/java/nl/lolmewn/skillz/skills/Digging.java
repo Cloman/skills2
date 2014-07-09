@@ -86,7 +86,8 @@ public class Digging extends Skill {
             event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&',
                     this.getMessage("messages.needsHigherLevelTool",
                             ChatColor.RED + "You need a higher %name% level to use this tool! "
-                            + "Level needed is %level%").replace("%name%", this.getName()).replace("%level%", "" + this.getSkillConfig().getInt("blocks.tool_level." + event.getBlock().getTypeId()))));
+                            + "Level needed is %level%").replace("%name%", this.getName())
+                            .replace("%level%", "" + this.getSkillConfig().getInt("blocks." + event.getBlock().getTypeId() + ".level"))));
             event.setCancelled(true);
             return;
         }
@@ -96,7 +97,7 @@ public class Digging extends Skill {
                             ChatColor.RED + "You need a higher %name% level to break this block! "
                             + "Level needed is %level%")
                     .replace("%name%", this.getName())
-                    .replace("%level%", "" + this.getSkillConfig().getInt("blocks.block_level." + event.getBlock().getTypeId()))));
+                    .replace("%level%", "" + this.getSkillConfig().getInt("blocks." + event.getBlock().getTypeId() + ".level"))));
             event.setCancelled(true);
             return;
         }
