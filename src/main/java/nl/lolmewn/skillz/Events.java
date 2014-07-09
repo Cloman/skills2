@@ -18,12 +18,12 @@ public class Events implements Listener {
     
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
-        m.getPlayerManager().loadPlayer(event.getPlayer().getName());
+        m.getPlayerManager().loadPlayer(event.getPlayer().getUniqueId());
     }
     
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event){
-        m.getPlayerManager().savePlayer(event.getPlayer().getName(), true);
+        m.getPlayerManager().savePlayer(event.getPlayer().getUniqueId(), true);
     }
 
 }

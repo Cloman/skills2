@@ -84,7 +84,7 @@ public class Swords extends Skill{
         if(!damager.hasPermission(this.getPermissionNode())){
             return;
         }
-        SkillzPlayer player = this.getAPI().getPlayerManager().getPlayer(damager.getName());
+        SkillzPlayer player = this.getAPI().getPlayerManager().getPlayer(damager.getUniqueId());
         ItemStack inHand = damager.getItemInHand();
         Material type = inHand.getType();
         if(!type.equals(Material.WOOD_SWORD) 

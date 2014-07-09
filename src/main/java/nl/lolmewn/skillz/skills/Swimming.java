@@ -92,7 +92,7 @@ public class Swimming extends Skill{
         if(!player.hasPermission(this.getPermissionNode())){
             return;
         }
-        SkillzPlayer sPlayer = this.getAPI().getPlayerManager().getPlayer(player.getName());
+        SkillzPlayer sPlayer = this.getAPI().getPlayerManager().getPlayer(player.getUniqueId());
         sPlayer.addXP(this, event.getDamage());
         if(this.getSkillConfig().getBoolean("special.ignoreDamage.enabled", false)){
             handleAvoidDamage(event, sPlayer, player);

@@ -98,7 +98,7 @@ public class Archery extends Skill {
             return;
         }
         LivingEntity damagee = (LivingEntity) event.getEntity();
-        SkillzPlayer sPlayer = this.getAPI().getPlayerManager().getPlayer(player.getName());
+        SkillzPlayer sPlayer = this.getAPI().getPlayerManager().getPlayer(player.getUniqueId());
         xp = 1;
         if (this.getSkillConfig().getBoolean("special.rangeXpMultiplier.enabled", false)) {
             double distance = player.getLocation().distanceSquared(arrow.getLocation());

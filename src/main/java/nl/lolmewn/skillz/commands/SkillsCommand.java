@@ -29,7 +29,7 @@ public class SkillsCommand implements CommandExecutor {
                 sender.sendMessage("This command is for players only.");
                 return true;
             }
-            SkillzPlayer player = plugin.getPlayerManager().getPlayer(sender.getName());
+            SkillzPlayer player = plugin.getPlayerManager().getPlayer(((Player)sender).getUniqueId());
             sendSkills(sender, player, 1);
             return true;
         }

@@ -1,21 +1,32 @@
 package nl.lolmewn.skillz.players;
 
 import java.util.HashMap;
+import java.util.UUID;
 import nl.lolmewn.skillz.api.Skill;
 import nl.lolmewn.skillz.api.events.SkillzPlayerLevelupEvent;
 import nl.lolmewn.skillz.api.events.SkillzPlayerXPGainEvent;
+import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 
 /**
  * @author Lolmewn
  */
 public class SkillzPlayer {
     
+    private final UUID uuid;
     private final String name;
     
     private final HashMap<String, Double> xpValues = new HashMap<String, Double>();
     private final HashMap<String, Integer> lvlValues = new HashMap<String, Integer>();
     
-    public SkillzPlayer(String name){
+    public SkillzPlayer(UUID uuid){
+        OfflinePlayer op = Bukkit.getOfflinePlayer(uuid);
+        this.uuid = uuid;
+        this.name = op.getName();
+    }
+    
+    public SkillzPlayer(UUID uuid, String name){
+        this.uuid = uuid;
         this.name = name;
     }
     

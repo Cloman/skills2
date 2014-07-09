@@ -83,7 +83,7 @@ public class Digging extends Skill {
         ConfigurationSection sec = this.getSkillConfig().contains("blocks." + event.getBlock().getType().name() + ":" + event.getBlock().getData()) ? 
                 this.getSkillConfig().getConfigurationSection("blocks." + event.getBlock().getType().name() + ":" + event.getBlock().getData()) :
                 this.getSkillConfig().getConfigurationSection("blocks." + event.getBlock().getType().name());
-        SkillzPlayer player = this.getAPI().getPlayerManager().getPlayer(event.getPlayer().getName());
+        SkillzPlayer player = this.getAPI().getPlayerManager().getPlayer(event.getPlayer().getUniqueId());
         if (this.getSkillConfig().getInt("blocks.tool_level." + event.getPlayer().getItemInHand().getType().toString(), 0) > player.getLevel(this)) {
             event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&',
                     this.getMessage("messages.needsHigherLevelTool",

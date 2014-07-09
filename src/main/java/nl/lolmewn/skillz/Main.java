@@ -24,6 +24,7 @@ import nl.lolmewn.skillz.skills.Woodcutting;
 import nl.lolmewn.stats.api.StatsAPI;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -63,6 +64,13 @@ public class Main extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new Events(this), this);
         this.getCommand("skills").setExecutor(new SkillsCommand(this));
         this.loadDefaultSkills();
+    }
+    
+    @Override
+    public void onDisable(){
+        for(Player player : this.getServer().getOnlinePlayers()){
+            this.getPlayerManager().savePlayer(player.getUniqueId(), true);
+        }
     }
 
     private void checkOldVersion() {
