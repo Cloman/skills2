@@ -64,6 +64,9 @@ public class Main extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new Events(this), this);
         this.getCommand("skills").setExecutor(new SkillsCommand(this));
         this.loadDefaultSkills();
+        for(Player player : this.getServer().getOnlinePlayers()){
+            this.getPlayerManager().loadPlayer(player.getUniqueId());
+        }
     }
     
     @Override
