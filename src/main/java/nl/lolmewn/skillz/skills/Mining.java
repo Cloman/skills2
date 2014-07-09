@@ -105,7 +105,7 @@ public class Mining extends Skill {
             event.setCancelled(true);
             return;
         }
-        player.addXP(this, this.getSkillConfig().getInt("blocks.xp." + event.getBlock().getTypeId(), 0));
+        player.addXP(this, this.getSkillConfig().getInt("blocks." + event.getBlock().getTypeId() + ".xp", 0));
         if(this.getSkillConfig().getBoolean("special.doubleDrops.enabled", false)){
             handleDoubleDrop(player, event);
         }
