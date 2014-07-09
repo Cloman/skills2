@@ -98,6 +98,9 @@ public class Woodcutting extends Skill {
             event.setCancelled(true);
             return;
         }
+        if(sec == null){
+            return;
+        }
         if (sec.getInt("level", 0) > player.getLevel(this)) {
             event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&',
                     this.getMessage("messages.needsHigherLevelBlock",
