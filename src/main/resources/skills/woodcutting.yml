@@ -29,4 +29,4 @@ messages:
     needsHigherLevelBlock: "You can't break this block! %name% level required: %level%"
     needsHigherLevelTool: "You can't use this tool yet! %name% level required: %level%"
     itemsDroppedOnGround: "Your inventory was full, causing your item rewards to be dropped on the ground!"
-    doubleDrop: "Your block had a double drop! How luck you are."
+    doubleDrop: "Your block had a double drop! How lucky you are."
