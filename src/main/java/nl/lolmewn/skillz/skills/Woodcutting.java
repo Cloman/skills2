@@ -112,9 +112,6 @@ public class Woodcutting extends Skill {
         if (this.getSkillConfig().getBoolean("special.doubleDrops.enabled", false)) {
             handleDoubleDrop(player, event);
         }
-        if (this.getSkillConfig().getBoolean("special.doubleXp.enabled", false) && event.getExpToDrop() != 0) {
-            handleDoubleXp(player, event);
-        }
     }
 
     @Override
