@@ -70,10 +70,7 @@ public class Woodcutting extends Skill {
             return true;
         }
         double xp = player.getXP(this);
-        if (xp / (level * level * 10) >= 1) {
-            return true;
-        }
-        return false;
+        return xp / (level * level * 10) >= 1;
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
@@ -81,30 +78,30 @@ public class Woodcutting extends Skill {
         if (!this.isEnabled()) {
             return;
         }
-        if (!this.getSkillConfig().contains("blocks." + event.getBlock().getTypeId())
-                && !this.getSkillConfig().contains("blocks.tool_level." + event.getPlayer().getItemInHand().getTypeId())) {
+        if (!this.getSkillConfig().contains("blocks." + event.getBlock().getType().toString())
+                && !this.getSkillConfig().contains("blocks.tool_level." + event.getPlayer().getItemInHand().getType().toString())) {
             return;
         }
         SkillzPlayer player = this.getAPI().getPlayerManager().getPlayer(event.getPlayer().getName());
-        if (this.getSkillConfig().getInt("blocks.tool_level." + event.getPlayer().getItemInHand().getTypeId(), 0) > player.getLevel(this)) {
+        if (this.getSkillConfig().getInt("blocks.tool_level." + event.getPlayer().getItemInHand().getType().toString(), 0) > player.getLevel(this)) {
             event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&',
                     this.getMessage("messages.needsHigherLevelTool",
                             ChatColor.RED + "You need a higher %name% level to use this tool! "
-                            + "Level needed is %level%").replace("%name%", this.getName()).replace("%level%", "" + this.getSkillConfig().getInt("blocks." + event.getBlock().getTypeId() + ".level"))));
+                            + "Level needed is %level%").replace("%name%", this.getName()).replace("%level%", "" + this.getSkillConfig().getInt("blocks." + event.getBlock().getType().toString() + ".level"))));
             event.setCancelled(true);
             return;
         }
-        if (this.getSkillConfig().getInt("blocks." + event.getBlock().getTypeId() + ".level", 0) > player.getLevel(this)) {
+        if (this.getSkillConfig().getInt("blocks." + event.getBlock().getType().toString() + ".level", 0) > player.getLevel(this)) {
             event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&',
                     this.getMessage("messages.needsHigherLevelBlock",
                             ChatColor.RED + "You need a higher %name% level to break this block! "
                             + "Level needed is %level%")
                     .replace("%name%", this.getName())
-                    .replace("%level%", "" + this.getSkillConfig().getInt("blocks." + event.getBlock().getTypeId() + ".level"))));
+                    .replace("%level%", "" + this.getSkillConfig().getInt("blocks." + event.getBlock().getType().toString() + ".level"))));
             event.setCancelled(true);
             return;
         }
-        player.addXP(this, this.getSkillConfig().getInt("blocks." + event.getBlock().getTypeId() + ".xp", 0));
+        player.addXP(this, this.getSkillConfig().getInt("blocks." + event.getBlock().getType().toString() + ".xp", 0));
         if(this.getSkillConfig().getBoolean("special.doubleDrops.enabled", false)){
             handleDoubleDrop(player, event);
         }
