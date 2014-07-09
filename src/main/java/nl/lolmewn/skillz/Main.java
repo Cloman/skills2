@@ -3,14 +3,24 @@
  */
 package nl.lolmewn.skillz;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nl.lolmewn.skillz.api.SkillManager;
 import nl.lolmewn.skillz.commands.SkillsCommand;
 import nl.lolmewn.skillz.mysql.MySQL;
 import nl.lolmewn.skillz.players.PlayerManager;
-import nl.lolmewn.skillz.skills.*;
+import nl.lolmewn.skillz.skills.Acrobatics;
+import nl.lolmewn.skillz.skills.Archery;
+import nl.lolmewn.skillz.skills.Digging;
+import nl.lolmewn.skillz.skills.Mining;
+import nl.lolmewn.skillz.skills.Swimming;
+import nl.lolmewn.skillz.skills.Woodcutting;
 import nl.lolmewn.stats.api.StatsAPI;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -34,9 +44,9 @@ public class Main extends JavaPlugin {
     
     @Override
     public void onEnable() {
-        checkFiles();
-        checkOldVersion();
-        initMessageManager();
+        this.checkFiles();
+        this.checkOldVersion();
+        this.initMessageManager();
         this.saveDefaultConfig();
         this.getConfig().options().copyDefaults(true);
         this.saveConfig();
@@ -58,7 +68,6 @@ public class Main extends JavaPlugin {
     private void checkOldVersion() {
         File oldConfig = new File(this.getDataFolder(), "skills.yml");
         if (oldConfig.exists()) {
-            oldConfig.renameTo(new File(this.getDataFolder(), "skills_old.yml"));
             convertConfig();
             File userDir = new File(this.getDataFolder(), "players/");
             if (userDir.exists()) {
@@ -66,6 +75,7 @@ public class Main extends JavaPlugin {
                     convertUser(user);
                 }
             }
+            oldConfig.delete();
         }
     }
 
