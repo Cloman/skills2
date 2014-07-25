@@ -134,7 +134,7 @@ public abstract class Skill implements Listener {
                             int amount = Integer.parseInt(item.split(",")[1]);
                             byte itemData = item.split(",").length == 3 ? Byte.parseByte(item.split(",")[2]) : 0;
                             itemRewards[i] = new ItemStack(itemId, amount, itemData);
-                        } catch (Exception e) {
+                        } catch (NumberFormatException e) {
                             this.getAPI().getPlugin().getLogger().warning("Unable to load default item '" + item + "' for skill '" + this.getName() + "', amount is no number");
                         }
                     }
@@ -149,7 +149,7 @@ public abstract class Skill implements Listener {
                         int amount = Integer.parseInt(items.split(",")[1]);
                         byte itemData = items.split(",").length == 3 ? Byte.parseByte(items.split(",")[2]) : 0;
                         itemRewards[0] = new ItemStack(itemId, amount, itemData);
-                    } catch (Exception e) {
+                    } catch (NumberFormatException e) {
                         this.getAPI().getPlugin().getLogger().warning("Unable to load default item '" + items + "' for skill '" + this.getName() + "', amount is no number");
                     }
                 }
