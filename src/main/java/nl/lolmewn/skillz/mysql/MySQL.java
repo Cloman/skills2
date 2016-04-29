@@ -25,9 +25,9 @@ public class MySQL {
     }
     
     public Connection getConnection() throws SQLException{
-        if(plugin.getSettings().isUsingStats()){
-            return plugin.getStatsApi().getConnection();
-        }
+//        if(plugin.getSettings().isUsingStats()){
+//            return plugin.getStatsApi().getConnection();
+//        }
         //TODO make own connection
         return null;
     }
