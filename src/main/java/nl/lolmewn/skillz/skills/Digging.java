@@ -77,19 +77,19 @@ public class Digging extends Skill {
         }
         if (!this.getSkillConfig().contains("blocks." + event.getBlock().getType().toString())
                 && !this.getSkillConfig().contains("blocks." + event.getBlock().getType().name() + ":" + event.getBlock().getData())
-                && !this.getSkillConfig().contains("blocks.tool_level." + event.getPlayer().getItemInHand().getType().toString())) {
+                && !this.getSkillConfig().contains("blocks.tool_level." + event.getPlayer().getInventory().getItemInMainHand().getType().toString())) {
             return;
         }
         ConfigurationSection sec = this.getSkillConfig().contains("blocks." + event.getBlock().getType().name() + ":" + event.getBlock().getData()) ? 
                 this.getSkillConfig().getConfigurationSection("blocks." + event.getBlock().getType().name() + ":" + event.getBlock().getData()) :
                 this.getSkillConfig().getConfigurationSection("blocks." + event.getBlock().getType().name());
         SkillzPlayer player = this.getAPI().getPlayerManager().getPlayer(event.getPlayer().getUniqueId());
-        if (this.getSkillConfig().getInt("blocks.tool_level." + event.getPlayer().getItemInHand().getType().toString(), 0) > player.getLevel(this)) {
+        if (this.getSkillConfig().getInt("blocks.tool_level." + event.getPlayer().getInventory().getItemInMainHand().getType().toString(), 0) > player.getLevel(this)) {
             event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&',
                     this.getMessage("messages.needsHigherLevelTool",
                             ChatColor.RED + "You need a higher %name% level to use this tool! "
                             + "Level needed is %level%").replace("%name%", this.getName())
-                            .replace("%level%", "" + this.getSkillConfig().getInt("blocks.tool_level." + event.getPlayer().getItemInHand().getType().toString(), 0))));
+                            .replace("%level%", "" + this.getSkillConfig().getInt("blocks.tool_level." + event.getPlayer().getInventory().getItemInMainHand().getType().toString(), 0))));
             event.setCancelled(true);
             return;
         }
@@ -132,7 +132,7 @@ public class Digging extends Skill {
                                 this.getMessage("messages.doubleDrop",
                                         "Your block had a double drop! How luck you are.")));
             }
-            Collection<ItemStack> drops = event.getBlock().getDrops(event.getPlayer().getItemInHand());
+            Collection<ItemStack> drops = event.getBlock().getDrops(event.getPlayer().getInventory().getItemInMainHand());
             for (ItemStack stack : drops) {
                 event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack);
             }

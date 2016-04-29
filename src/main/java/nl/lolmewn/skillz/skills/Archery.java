@@ -97,6 +97,11 @@ public class Archery extends Skill {
         if (!player.hasPermission(this.getPermissionNode())) {
             return;
         }
+        
+        if(!(event.getEntity() instanceof LivingEntity)){
+            return;
+        }
+        
         LivingEntity damagee = (LivingEntity) event.getEntity();
         SkillzPlayer sPlayer = this.getAPI().getPlayerManager().getPlayer(player.getUniqueId());
         xp = 1;

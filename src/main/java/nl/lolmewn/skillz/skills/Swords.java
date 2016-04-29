@@ -85,7 +85,7 @@ public class Swords extends Skill{
             return;
         }
         SkillzPlayer player = this.getAPI().getPlayerManager().getPlayer(damager.getUniqueId());
-        ItemStack inHand = damager.getItemInHand();
+        ItemStack inHand = damager.getInventory().getItemInMainHand();
         Material type = inHand.getType();
         if(!type.equals(Material.WOOD_SWORD) 
                 && !type.equals(Material.IRON_SWORD) 
