@@ -8,6 +8,7 @@ import nl.lolmewn.skillz.SkillzApi;
 import nl.lolmewn.skillz.api.Skill;
 import nl.lolmewn.skillz.players.SkillzPlayer;
 import nl.lolmewn.skillz.util.MathProcessor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -95,6 +96,10 @@ public class Archery extends Skill {
         }
         Player player = ((Player) arrow.getShooter());
         if (!player.hasPermission(this.getPermissionNode())) {
+            return;
+        }
+        
+        if (player.getGameMode() == GameMode.CREATIVE){
             return;
         }
         
