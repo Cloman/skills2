@@ -7,6 +7,14 @@ broadcastLevelup: true
 blocks:
     STONE:
         xp: 1
+    NETHERRACK:
+        xp: 1
+    SANDSTONE:
+        xp: 1
+    HARD_CLAY:
+        xp: 1
+    OBSIDIAN:
+        xp: 2
     COBBLESTONE:
         xp: 0.5
         level: 5
