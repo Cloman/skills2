@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import nl.lolmewn.skillz.SkillzApi;
 import nl.lolmewn.skillz.api.Skill;
 import nl.lolmewn.skillz.players.SkillzPlayer;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -84,6 +85,11 @@ public class Swords extends Skill{
         if(!damager.hasPermission(this.getPermissionNode())){
             return;
         }
+        
+        if (damager.getGameMode() == GameMode.CREATIVE){
+            return;
+        }
+        
         SkillzPlayer player = this.getAPI().getPlayerManager().getPlayer(damager.getUniqueId());
         ItemStack inHand = damager.getInventory().getItemInMainHand();
         Material type = inHand.getType();

@@ -10,6 +10,7 @@ import nl.lolmewn.skillz.api.Skill;
 import nl.lolmewn.skillz.players.SkillzPlayer;
 import nl.lolmewn.skillz.util.MathProcessor;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -77,6 +78,10 @@ public class Digging extends Skill {
         }
         
         if (!event.getPlayer().hasPermission(this.getPermissionNode())) {
+            return;
+        }
+        
+        if (event.getPlayer().getGameMode() == GameMode.CREATIVE){
             return;
         }
         

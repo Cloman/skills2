@@ -9,6 +9,7 @@ import nl.lolmewn.skillz.api.Skill;
 import nl.lolmewn.skillz.players.SkillzPlayer;
 import nl.lolmewn.skillz.util.MathProcessor;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -92,6 +93,11 @@ public class Swimming extends Skill{
         if(!player.hasPermission(this.getPermissionNode())){
             return;
         }
+        
+        if (player.getGameMode() == GameMode.CREATIVE){
+            return;
+        }
+        
         SkillzPlayer sPlayer = this.getAPI().getPlayerManager().getPlayer(player.getUniqueId());
         sPlayer.addXP(this, event.getDamage());
         if(this.getSkillConfig().getBoolean("special.ignoreDamage.enabled", false)){
