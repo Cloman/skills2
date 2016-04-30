@@ -1,5 +1,5 @@
 name: Archery
-description: Level up your arcbery skill to deal extra damage!
+description: Level up your archery skill to deal extra damage!
 multiplier: 1
 enabled: true
 broadcastLevelup: true

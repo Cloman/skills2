@@ -79,6 +79,11 @@ public class Mining extends Skill {
         if (!this.isEnabled()) {
             return;
         }
+        
+        if (!event.getPlayer().hasPermission(this.getPermissionNode())) {
+            return;
+        }
+        
         if (!this.getSkillConfig().contains("blocks." + event.getBlock().getType().toString())
                 && !this.getSkillConfig().contains("blocks." + event.getBlock().getType().name() + ":" + event.getBlock().getData())
                 && !this.getSkillConfig().contains("blocks.tool_level." + event.getPlayer().getInventory().getItemInMainHand().getType().toString())) {

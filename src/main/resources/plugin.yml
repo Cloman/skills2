@@ -6,3 +6,34 @@ commands:
   skills:
     usage: Syntax error in command! /<command> help for the help page!
     description: This command is used for Skillz.
+permissions:  
+  skillz.skill.Acrobatics:
+    description: Enables or disables Skillz Acrobatics.
+    default: true
+  skillz.skill.Archery:
+    description: Enables or disables Skillz Archery.
+    default: true
+  skillz.skill.Digging:
+    description: Enables or disables Skillz Digging.
+    default: true
+  skillz.skill.Mining:
+    description: Enables or disables Skillz Mining.
+    default: true
+  skillz.skill.Swimming:
+    description: Enables or disables Skillz Swimming.
+    default: true
+  skillz.skill.Swords:
+    description: Enables or disables Skillz Swords.
+    default: true
+  skillz.skill.Woodcutting:
+    description: Enables or disables Skillz Woodcutting.
+    default: true
+  skillz.skill.*:
+    children:
+      skillz.skill.Acrobatics: true
+      skillz.skill.Archery: true
+      skillz.skill.Digging: true
+      skillz.skill.Mining: true
+      skillz.skill.Swimming: true
+      skillz.skill.Swords: true
+      skillz.skill.Woodcutting: true

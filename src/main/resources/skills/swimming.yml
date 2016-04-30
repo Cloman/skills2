@@ -1,5 +1,5 @@
-name: Acrobatics
-description: Level up your acrobatics skill to avoid damage when falling!
+name: Swimming
+description: Level up your Swimming skill!
 multiplier: 1
 enabled: true
 broadcastLevelup: true
